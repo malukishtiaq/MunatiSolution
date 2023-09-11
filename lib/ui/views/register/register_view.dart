@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:Munati/ui/components/terms_condition.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../common/all_enums.dart';
@@ -23,11 +24,11 @@ class RegisterView extends StackedView<RegisterViewModel> {
       body: Column(
         children: <Widget>[
           const Expanded(
-            flex: 2,
+            flex: 20,
             child: SignupHeader(),
           ),
           Expanded(
-            flex: 8,
+            flex: 80,
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               decoration: topLeftRoundContainer(),
@@ -54,16 +55,18 @@ class RegisterView extends StackedView<RegisterViewModel> {
                   sizeBoxHeight10(),
                   CustomTextField(ksEmail),
                   sizeBoxHeight10(),
+                  CustomTextField(ksUsername),
                   sizeBoxHeight10(),
+                  CustomTextField(ksPassword, isPassword: true),
+                  sizeBoxHeight10(),
+                  CustomTextField(ksConfirmPassword, isPassword: true),
                   sizeBoxHeight10(),
                   Center(
                     child: thinGreenBar(),
                   ),
                   sizeBoxHeight10(),
-                  sizeBoxHeight10(),
-                  sizeBoxHeight10(),
                   FullWidthButton(
-                    onPressed: () => viewModel.navigateToCredentials(),
+                    onPressed: () => viewModel.createAccountUser(),
                     buttonText: ksNext,
                   ),
                   const Flexible(fit: FlexFit.tight, child: SizedBox()),
@@ -106,37 +109,4 @@ class RegisterView extends StackedView<RegisterViewModel> {
     BuildContext context,
   ) =>
       RegisterViewModel();
-}
-
-class TermsCondition extends StatelessWidget {
-  const TermsCondition({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            ksYouAgree,
-            textAlign: TextAlign.center,
-            style: normalTextStyle(),
-          ),
-          const SizedBox(
-            width: 10,
-          ),
-          const Text(
-            ksTermsCondition,
-            style: TextStyle(
-              color: kcTextGreenColor,
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-            ),
-          )
-        ],
-      ),
-    );
-  }
 }

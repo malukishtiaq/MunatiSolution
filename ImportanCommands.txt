@@ -1,7 +1,7 @@
 git push origin HEAD
 
 to remove a folder from git
-git rm -r --cached .dart_tool   
+git rm -r --cached android/.gradle
 
 keytool -list -v -keystore ~/Meetbok.keystore -alias Meetbok -storepass aaaaaaaa -keypass aaaaaaaa 
 

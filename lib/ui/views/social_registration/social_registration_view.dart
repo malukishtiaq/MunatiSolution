@@ -1,3 +1,4 @@
+import 'package:Munati/ui/components/terms_condition.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../common/all_enums.dart';
@@ -5,7 +6,6 @@ import '../../common/common_files.dart';
 import '../../components/custom_text_field.dart';
 import '../../components/full_width_button.dart';
 import '../../components/signup_header.dart';
-import '../register/register_view.dart';
 import 'social_registration_viewmodel.dart';
 
 class SocialRegistrationView extends StackedView<SocialRegistrationViewModel> {
@@ -72,8 +72,7 @@ class SocialRegistrationView extends StackedView<SocialRegistrationViewModel> {
                   Center(
                     child: thickGreenBar(),
                   ),
-                  sizeBoxHeight10(),
-                  sizeBoxHeight10(),
+                  sizeBoxHeight20(),
                   CustomTextField(ksFirstName),
                   sizeBoxHeight10(),
                   CustomTextField(ksLastName),
@@ -83,24 +82,20 @@ class SocialRegistrationView extends StackedView<SocialRegistrationViewModel> {
                   CustomTextField(ksPhoneNumber),
                   sizeBoxHeight10(),
                   CustomTextField(ksUsername),
-                  sizeBoxHeight10(),
-                  sizeBoxHeight10(),
+                  sizeBoxHeight20(),
                   Center(
                     child: thinGreenBar(),
                   ),
-                  sizeBoxHeight10(),
-                  sizeBoxHeight10(),
+                  sizeBoxHeight20(),
                   FullWidthButton(
                     onPressed: () => viewModel.navigateToNextPage(),
                     buttonText: ksNext,
                   ),
-                  sizeBoxHeight10(),
-                  sizeBoxHeight10(),
+                  sizeBoxHeight20(),
                   Center(
                     child: thinGreenBar(),
                   ),
-                  sizeBoxHeight10(),
-                  sizeBoxHeight10(),
+                  sizeBoxHeight20(),
                   const TermsCondition(),
                   const Flexible(fit: FlexFit.tight, child: SizedBox()),
                 ],

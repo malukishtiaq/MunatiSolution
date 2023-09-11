@@ -150,3 +150,7 @@ Container thickGreenBar() {
 }
 
 SizedBox sizeBoxHeight10() => SizedBox(height: Platform.isAndroid ? 10 : 20);
+
+SizedBox sizeBoxHeight20() => SizedBox(height: Platform.isAndroid ? 20 : 40);
+
+SizedBox sizeBoxHeight30() => SizedBox(height: Platform.isAndroid ? 30 : 60);

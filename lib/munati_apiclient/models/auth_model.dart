@@ -12,6 +12,8 @@ class AuthRequest {
       android_m_device_id,
       device_type;
 
+  String? email, confirm_password, phone_num;
+
   AuthRequest(
       {required this.server_key,
       required this.timezone,
@@ -19,7 +21,10 @@ class AuthRequest {
       required this.password,
       required this.android_n_device_id,
       required this.android_m_device_id,
-      required this.device_type});
+      required this.device_type,
+      this.email = "",
+      this.confirm_password = "",
+      this.phone_num = ""});
 
   /// Connect the generated [_$AuthRequestFromJson] function to the `fromJson`
   /// factory.

@@ -14,6 +14,9 @@ AuthRequest _$AuthRequestFromJson(Map<String, dynamic> json) => AuthRequest(
       android_n_device_id: json['android_n_device_id'] as String,
       android_m_device_id: json['android_m_device_id'] as String,
       device_type: json['device_type'] as String,
+      email: json['email'] as String? ?? "",
+      confirm_password: json['confirm_password'] as String? ?? "",
+      phone_num: json['phone_num'] as String? ?? "",
     );
 
 Map<String, dynamic> _$AuthRequestToJson(AuthRequest instance) =>
@@ -25,6 +28,9 @@ Map<String, dynamic> _$AuthRequestToJson(AuthRequest instance) =>
       'android_n_device_id': instance.android_n_device_id,
       'android_m_device_id': instance.android_m_device_id,
       'device_type': instance.device_type,
+      'email': instance.email,
+      'confirm_password': instance.confirm_password,
+      'phone_num': instance.phone_num,
     };
 
 AuthResponse _$AuthResponseFromJson(Map<String, dynamic> json) => AuthResponse(
