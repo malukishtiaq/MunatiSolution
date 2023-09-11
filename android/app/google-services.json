@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "958810801199",
+    "project_id": "munati-2f9ac",
+    "storage_bucket": "munati-2f9ac.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958810801199:android:c938238f2690fb5f97b2da",
+        "android_client_info": {
+          "package_name": "com.munati.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "958810801199-podfpbts5gliuf55c38e3de2eumsqv1f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.munati.app",
+            "certificate_hash": "d5ff0d2ca2b330b70592f3d257185066a87265e5"
+          }
+        },
+        {
+          "client_id": "958810801199-3he3js5q4v950u3klq87dt28dclg569m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcImratWJPhTRklHNIsNQuWoPd2nFjYn4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "958810801199-3he3js5q4v950u3klq87dt28dclg569m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
