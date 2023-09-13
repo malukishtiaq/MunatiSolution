@@ -5,18 +5,19 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i8;
+import 'package:flutter/material.dart' as _i9;
 import 'package:flutter/material.dart';
-import 'package:Munati/ui/common/all_enums.dart' as _i9;
+import 'package:Munati/ui/common/all_enums.dart' as _i10;
 import 'package:Munati/ui/views/home/home_view.dart' as _i2;
 import 'package:Munati/ui/views/login/login_view.dart' as _i4;
+import 'package:Munati/ui/views/market/market_view.dart' as _i8;
 import 'package:Munati/ui/views/register/register_view.dart' as _i5;
 import 'package:Munati/ui/views/social_login/social_login_view.dart' as _i6;
 import 'package:Munati/ui/views/social_registration/social_registration_view.dart'
     as _i7;
 import 'package:Munati/ui/views/startup/startup_view.dart' as _i3;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:stacked_services/stacked_services.dart' as _i11;
 
 class Routes {
   static const homeView = '/home-view';
@@ -31,6 +32,8 @@ class Routes {
 
   static const socialRegistrationView = '/social-registration-view';
 
+  static const marketView = '/market-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -38,6 +41,7 @@ class Routes {
     registerView,
     socialLoginView,
     socialRegistrationView,
+    marketView,
   };
 }
 
@@ -67,36 +71,40 @@ class StackedRouter extends _i1.RouterBase {
       Routes.socialRegistrationView,
       page: _i7.SocialRegistrationView,
     ),
+    _i1.RouteDef(
+      Routes.marketView,
+      page: _i8.MarketView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.LoginView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
     _i5.RegisterView: (data) {
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.RegisterView(),
         settings: data,
       );
     },
     _i6.SocialLoginView: (data) {
       final args = data.getArgs<SocialLoginViewArguments>(nullOk: false);
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i6.SocialLoginView(key: args.key, types: args.types),
         settings: data,
@@ -104,9 +112,15 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i7.SocialRegistrationView: (data) {
       final args = data.getArgs<SocialRegistrationViewArguments>(nullOk: false);
-      return _i8.MaterialPageRoute<dynamic>(
+      return _i9.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i7.SocialRegistrationView(key: args.key, types: args.types),
+        settings: data,
+      );
+    },
+    _i8.MarketView: (data) {
+      return _i9.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i8.MarketView(),
         settings: data,
       );
     },
@@ -124,9 +138,9 @@ class SocialLoginViewArguments {
     required this.types,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i9.SocialMediaTypes types;
+  final _i10.SocialMediaTypes types;
 
   @override
   String toString() {
@@ -151,9 +165,9 @@ class SocialRegistrationViewArguments {
     required this.types,
   });
 
-  final _i8.Key? key;
+  final _i9.Key? key;
 
-  final _i9.SocialMediaTypes types;
+  final _i10.SocialMediaTypes types;
 
   @override
   String toString() {
@@ -172,7 +186,7 @@ class SocialRegistrationViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i10.NavigationService {
+extension NavigatorStateExtension on _i11.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -230,8 +244,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
   }
 
   Future<dynamic> navigateToSocialLoginView({
-    _i8.Key? key,
-    required _i9.SocialMediaTypes types,
+    _i9.Key? key,
+    required _i10.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -247,8 +261,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
   }
 
   Future<dynamic> navigateToSocialRegistrationView({
-    _i8.Key? key,
-    required _i9.SocialMediaTypes types,
+    _i9.Key? key,
+    required _i10.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -257,6 +271,20 @@ extension NavigatorStateExtension on _i10.NavigationService {
   }) async {
     return navigateTo<dynamic>(Routes.socialRegistrationView,
         arguments: SocialRegistrationViewArguments(key: key, types: types),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToMarketView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.marketView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -320,8 +348,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
   }
 
   Future<dynamic> replaceWithSocialLoginView({
-    _i8.Key? key,
-    required _i9.SocialMediaTypes types,
+    _i9.Key? key,
+    required _i10.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -337,8 +365,8 @@ extension NavigatorStateExtension on _i10.NavigationService {
   }
 
   Future<dynamic> replaceWithSocialRegistrationView({
-    _i8.Key? key,
-    required _i9.SocialMediaTypes types,
+    _i9.Key? key,
+    required _i10.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -347,6 +375,20 @@ extension NavigatorStateExtension on _i10.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.socialRegistrationView,
         arguments: SocialRegistrationViewArguments(key: key, types: types),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithMarketView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.marketView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

@@ -42,3 +42,6 @@ const String ksClickHere = 'Click Here';
 
 //social login
 const String ksSignInViaEmail = 'To Sign In Using Your Email Account';
+
+//load products
+const String ksLoadProducts = 'Load Products';

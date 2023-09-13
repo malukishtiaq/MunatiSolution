@@ -1,7 +1,7 @@
 class Endpoints {
   Endpoints._();
 
-  static const String baseURL = 'https://munati.xyz';
+  static const String baseURL = 'https://demo.wowonder.com';
 
   static const int receiveTimeout = 5000;
 

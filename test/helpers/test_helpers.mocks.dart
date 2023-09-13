@@ -10,6 +10,7 @@ import 'package:flutter/material.dart' as _i3;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:Munati/munati_apiclient/models/models.dart' as _i7;
 import 'package:Munati/services/authentication_service.dart' as _i6;
+import 'package:Munati/services/market_service.dart' as _i8;
 import 'package:stacked_services/stacked_services.dart' as _i2;
 
 // ignore_for_file: type=lint
@@ -639,6 +640,30 @@ class MockAuthenticationService extends _i1.Mock
   _i4.Future<_i7.AuthResponse?> authenticateUser() => (super.noSuchMethod(
         Invocation.method(
           #authenticateUser,
+          [],
+        ),
+        returnValue: _i4.Future<_i7.AuthResponse?>.value(),
+        returnValueForMissingStub: _i4.Future<_i7.AuthResponse?>.value(),
+      ) as _i4.Future<_i7.AuthResponse?>);
+  @override
+  _i4.Future<_i7.AuthResponse?> createAccountUser() => (super.noSuchMethod(
+        Invocation.method(
+          #createAccountUser,
+          [],
+        ),
+        returnValue: _i4.Future<_i7.AuthResponse?>.value(),
+        returnValueForMissingStub: _i4.Future<_i7.AuthResponse?>.value(),
+      ) as _i4.Future<_i7.AuthResponse?>);
+}
+
+/// A class which mocks [MarketService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockMarketService extends _i1.Mock implements _i8.MarketService {
+  @override
+  _i4.Future<_i7.AuthResponse?> loadProducts() => (super.noSuchMethod(
+        Invocation.method(
+          #loadProducts,
           [],
         ),
         returnValue: _i4.Future<_i7.AuthResponse?>.value(),

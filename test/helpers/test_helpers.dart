@@ -3,6 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:Munati/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:Munati/services/authentication_service.dart';
+import 'package:Munati/services/market_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -12,6 +13,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<BottomSheetService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<MarketService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -19,6 +21,7 @@ void registerServices() {
   getAndRegisterBottomSheetService();
   getAndRegisterDialogService();
   getAndRegisterAuthenticationService();
+  getAndRegisterMarketService();
 // @stacked-mock-register
 }
 
@@ -76,6 +79,13 @@ MockAuthenticationService getAndRegisterAuthenticationService() {
   _removeRegistrationIfExists<AuthenticationService>();
   final service = MockAuthenticationService();
   locator.registerSingleton<AuthenticationService>(service);
+  return service;
+}
+
+MockMarketService getAndRegisterMarketService() {
+  _removeRegistrationIfExists<MarketService>();
+  final service = MockMarketService();
+  locator.registerSingleton<MarketService>(service);
   return service;
 }
 // @stacked-mock-create

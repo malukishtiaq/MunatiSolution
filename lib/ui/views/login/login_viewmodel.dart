@@ -16,7 +16,7 @@ class LoginViewModel extends BaseViewModel {
 
   Future authenticateUser() async {
     var result = await _authenticationService.authenticateUser();
-    print(result?.access_token);
+    _navigationService.navigateToMarketView();
   }
 
   Future navigateToSocialLogin(SocialMediaTypes socialMediaType) async {
