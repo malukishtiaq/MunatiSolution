@@ -113,21 +113,21 @@ class MarketApi extends BaseApi {
         if (attachment.fileUrl.contains("http")) continue;
         Stream? stream = attachment.fileStream;
         //new http.ByteStream(DelegatingStream.typed(imageFile.openRead()));
-        var length = await attachment.length();
+        // var length = await attachment.length();
 
-        var uri = Uri.parse(uploadURL);
+        // var uri = Uri.parse(uploadURL);
 
-        var request = new http.MultipartRequest("POST", uri);
-        var multipartFile = new http.MultipartFile('file', stream, length,
-            filename: basename(imageFile.path));
-        //contentType: new MediaType('image', 'png'));
+        // var request = new http.MultipartRequest("POST", uri);
+        // var multipartFile = new http.MultipartFile('file', stream, length,
+        //     filename: basename(imageFile.path));
+        // //contentType: new MediaType('image', 'png'));
 
-        request.files.add(multipartFile);
-        var response = await request.send();
-        print(response.statusCode);
-        response.stream.transform(utf8.decoder).listen((value) {
-          print(value);
-        });
+        // request.files.add(multipartFile);
+        // var response = await request.send();
+        // print(response.statusCode);
+        // response.stream.transform(utf8.decoder).listen((value) {
+        //   print(value);
+        // });
 
         //FileStream fs = File.OpenRead(attachment.FileUrl);
         // StreamContent sContent = new StreamContent(fs);
@@ -151,60 +151,60 @@ class MarketApi extends BaseApi {
     // var response = await RestHttp.RunRetryPolicyFunction(RestHttp.Client.SendAsync(request));
     // String json = await response.Content.ReadAsStringAsync();
   }
-static Future multipartProdecudre(
-      {required String? url,
-      required String? filepath,
-      String currentUserId = "",
-      String profileorvideo = "",
-      String description = "",
-      bool isChatImage = false}) async {
-    try {
-      var multipartRequest = http.MultipartRequest('post', Uri.parse(url!));
-      multipartRequest.headers.addAll(
-        {
-          "Authorization": "Bearer 14FE34B2-9547-43F5-A57C-F0DC7DE81AA9",
-          "Content-Type": "multipart/form-data",
-          "AppName": "DbLetsConnect",
-        },
-      );
-      var millisecondsSinceEpoch =
-          DateTime.now().millisecondsSinceEpoch.toString() +
-              "." +
-              filepath!.split(".").last;
-      if (!isChatImage) {
-        multipartRequest.fields['Id'] = currentUserId;
-        multipartRequest.fields['FileType'] = profileorvideo;
-        multipartRequest.fields['Description'] = description;
-      }
+// static Future multipartProdecudre(
+//       {required String? url,
+//       required String? filepath,
+//       String currentUserId = "",
+//       String profileorvideo = "",
+//       String description = "",
+//       bool isChatImage = false}) async {
+//     try {
+//       var multipartRequest = http.MultipartRequest('post', Uri.parse(url!));
+//       multipartRequest.headers.addAll(
+//         {
+//           "Authorization": "Bearer 14FE34B2-9547-43F5-A57C-F0DC7DE81AA9",
+//           "Content-Type": "multipart/form-data",
+//           "AppName": "DbLetsConnect",
+//         },
+//       );
+//       var millisecondsSinceEpoch =
+//           DateTime.now().millisecondsSinceEpoch.toString() +
+//               "." +
+//               filepath!.split(".").last;
+//       if (!isChatImage) {
+//         multipartRequest.fields['Id'] = currentUserId;
+//         multipartRequest.fields['FileType'] = profileorvideo;
+//         multipartRequest.fields['Description'] = description;
+//       }
 
-      multipartRequest.files.add(
-        await http.MultipartFile.fromPath(
-          "File",
-          filepath,
-          filename: millisecondsSinceEpoch,
-          contentType: MediaType('image', 'jpeg'),
-        ),
-      );
+//       multipartRequest.files.add(
+//         await http.MultipartFile.fromPath(
+//           "File",
+//           filepath,
+//           filename: millisecondsSinceEpoch,
+//           contentType: MediaType('image', 'jpeg'),
+//         ),
+//       );
 
-      http.Response response =
-          await http.Response.fromStream(await multipartRequest.send());
+//       http.Response response =
+//           await http.Response.fromStream(await multipartRequest.send());
 
-      final statusCode = response.statusCode;
+//       final statusCode = response.statusCode;
 
-      if (statusCode == 200) {
-        return Constants.resultInApi(response.body, false);
-      } else if (statusCode == 429) {
-        //SimpleHttpParser.callPostEncodeApi(url: url, strJson: strJson);
-      } else {
-        return Constants.resultInApi("", true);
-      }
-    } on SocketException {
-      return Constants.resultInApi("You are not connected to internet ☹", true);
-    } on TimeoutException {
-      return Constants.resultInApi(
-          "The Internet connection has timed out, Please try again.", true);
-    } catch (e) {
-      return Constants.resultInApi("", true);
-    }
-  }
-}}
+//       if (statusCode == 200) {
+//         return Constants.resultInApi(response.body, false);
+//       } else if (statusCode == 429) {
+//         //SimpleHttpParser.callPostEncodeApi(url: url, strJson: strJson);
+//       } else {
+//         return Constants.resultInApi("", true);
+//       }
+//     } on SocketException {
+//       return Constants.resultInApi("You are not connected to internet ☹", true);
+//     } on TimeoutException {
+//       return Constants.resultInApi(
+//           "The Internet connection has timed out, Please try again.", true);
+//     } catch (e) {
+//       return Constants.resultInApi("", true);
+//     }
+//   }
+}

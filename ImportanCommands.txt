@@ -30,3 +30,5 @@ dart pub global activate stacked_cli
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 stacked create view login
 stacked create service authentication
+
+dart run build_runner build
