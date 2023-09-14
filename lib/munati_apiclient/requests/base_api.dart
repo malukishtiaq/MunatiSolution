@@ -4,6 +4,7 @@ import 'package:Munati/munati_apiclient/network/interceptors/logger_interceptor.
 import 'package:dio/dio.dart';
 
 class BaseApi {
+  String accessToken = "";
   late final Dio dioClient;
   BaseApi()
       : dioClient = Dio(

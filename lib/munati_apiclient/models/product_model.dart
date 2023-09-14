@@ -5,7 +5,16 @@ part 'product_model.g.dart';
 @JsonSerializable()
 class ProductRequest {
   final String server_key;
-  String? user_id, limit, categoryId, keyword, distance, offset;
+  String? user_id,
+      limit,
+      categoryId,
+      keyword,
+      distance,
+      offset,
+      type,
+      product_id,
+      qty,
+      address_id;
   bool? enabled;
 
   ProductRequest({
@@ -17,6 +26,10 @@ class ProductRequest {
     this.keyword,
     this.enabled,
     this.distance,
+    this.type,
+    this.product_id,
+    this.qty,
+    this.address_id,
   });
 
   /// Connect the generated [_$ProductRequestFromJson] function to the `fromJson`
@@ -27,12 +40,57 @@ class ProductRequest {
   /// Connect the generated [_$ProductRequestToJson] function to the `toJson` method.
   Map<String, dynamic> toJson() => _$ProductRequestToJson(this);
 }
+
+@JsonSerializable()
+class ProductUpdateRequest {
+  final String server_key;
+  String? product_id,
+      product_title,
+      product_description,
+      product_location,
+      product_price,
+      product_category,
+      product_type,
+      currency,
+      deleted_images_ids;
+
+  ProductUpdateRequest({
+    required this.server_key,
+    this.product_id,
+    this.product_title,
+    this.product_description,
+    this.product_location,
+    this.product_price,
+    this.product_category,
+    this.product_type,
+    this.currency,
+    this.deleted_images_ids,
+  });
+
+  /// Connect the generated [_$ProductUpdateRequestFromJson] function to the `fromJson`
+  /// factory.
+  factory ProductUpdateRequest.fromJson(Map<String, dynamic> json) =>
+      _$ProductUpdateRequestFromJson(json);
+
+  /// Connect the generated [_$ProductUpdateRequestToJson] function to the `toJson` method.
+  Map<String, dynamic> toJson() => _$ProductUpdateRequestToJson(this);
+}
+
 // To parse this JSON data, do
 //
 //     final productResponse = productResponseFromJson(jsonString);
 
-ProductResponse productResponseFromJson(String str) =>
-    ProductResponse.fromJson(json.decode(str));
+// ProductResponse productResponseFromJson(String str) =>
+//     ProductResponse.fromJson(json.decode(str));
+
+ProductResponse productResponseFromJson(Map<String, dynamic> json) =>
+    ProductResponse(
+      apiStatus: json["api_status"],
+      products: json["products"] == null
+          ? []
+          : List<Product>.from(
+              json["products"].map((x) => Product.fromJson(x))),
+    );
 
 String productResponseToJson(ProductResponse data) =>
     json.encode(data.toJson());

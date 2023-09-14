@@ -37,7 +37,7 @@ class DioClient {
 
   Future<AuthRequest?> createUser({required AuthRequest auth}) async {
     try {
-      final response = await dio.post(Endpoints.auth, data: auth.toJson());
+      final response = await dio.post(Endpoints.Auth, data: auth.toJson());
       return AuthRequest.fromJson(response.data);
     } on DioException catch (err) {
       var errorMessage = DioException.connectionError(

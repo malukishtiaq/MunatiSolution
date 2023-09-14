@@ -8,7 +8,7 @@ class AuthApi extends BaseApi {
   Future<AuthResponse?> authAsync({required AuthRequest auth}) async {
     try {
       final response =
-          await dioClient.post(Endpoints.auth, data: auth.toJson());
+          await dioClient.post(Endpoints.Auth, data: auth.toJson());
       return AuthResponse.fromJson(response.data);
     } on DioException catch (err) {
       var errorMessage = DioException.connectionError(
@@ -23,7 +23,7 @@ class AuthApi extends BaseApi {
   Future<AuthResponse?> createAccountAsync({required AuthRequest auth}) async {
     try {
       final response =
-          await dioClient.post(Endpoints.createAccount, data: auth.toJson());
+          await dioClient.post(Endpoints.CreateAccount, data: auth.toJson());
       return AuthResponse.fromJson(response.data);
     } on DioException catch (err) {
       var errorMessage = DioException.connectionError(
