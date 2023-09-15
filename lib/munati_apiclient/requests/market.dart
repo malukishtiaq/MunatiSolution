@@ -9,6 +9,23 @@ class MarketApi extends BaseApi {
   MarketApi() {
     accessToken = Current.User.access_token ?? "";
   }
+
+  Future<ProductResponse> createProductAsync(
+      {required ProductUpdateRequest createProductRequest}) async {
+    try {
+      var response = await dioClient.post(Endpoints.CreateProduct + accessToken,
+          data: createProductRequest.toJson());
+      return productResponseFromJson(response.data);
+    } on DioException catch (err) {
+      var errorMessage = DioException.connectionError(
+          requestOptions: err.requestOptions, reason: err.message ?? "");
+      throw errorMessage;
+    } catch (e) {
+      if (kDebugMode) print(e);
+      throw e.toString();
+    }
+  }
+
   Future<ProductResponse> getProductsAsync(
       {required ProductRequest productRequest}) async {
     try {
