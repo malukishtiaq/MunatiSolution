@@ -5,6 +5,7 @@ import 'package:Munati/app/app.locator.dart';
 import 'package:Munati/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:timezone/data/latest.dart' as tz;
+import 'ui/common/size_config.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,6 +21,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return MaterialApp(
       initialRoute: Routes.startupView,
       onGenerateRoute: StackedRouter().onGenerateRoute,

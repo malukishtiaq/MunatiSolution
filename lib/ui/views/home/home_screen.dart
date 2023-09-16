@@ -2,28 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import '../../widgets/common/custom_bottom_nav_bar/custom_bottom_nav_bar.dart';
 import '../../common/enums.dart';
-import 'market_viewmodel.dart';
+import 'components/body.dart';
+import 'home_viewmodel.dart';
 
-import '../home/components/body.dart';
-
-class MarketView extends StackedView<MarketViewModel> {
-  const MarketView({Key? key}) : super(key: key);
+class HomeView extends StackedView<HomeViewModel> {
+  const HomeView({Key? key}) : super(key: key);
 
   @override
   Widget builder(
     BuildContext context,
-    MarketViewModel viewModel,
+    HomeViewModel viewModel,
     Widget? child,
   ) {
     return Scaffold(
       body: Body(),
-      bottomNavigationBar: CustomBottomNavBar(selectedMenu: MenuState.home),
+      bottomNavigationBar: CustomBottomNavBar(
+        selectedMenu: MenuState.home,
+      ),
     );
   }
 
   @override
-  MarketViewModel viewModelBuilder(
+  HomeViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      MarketViewModel();
+      HomeViewModel();
 }

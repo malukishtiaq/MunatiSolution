@@ -8,7 +8,7 @@ import 'dart:ui' as _i6;
 
 import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:Munati/munati_apiclient/models/models.dart' as _i2;
+import 'package:Munati/models/models.dart' as _i2;
 import 'package:Munati/services/authentication_service.dart' as _i7;
 import 'package:Munati/services/market_service.dart' as _i8;
 import 'package:stacked_services/stacked_services.dart' as _i3;
@@ -94,7 +94,7 @@ class MockNavigationService extends _i1.Mock implements _i3.NavigationService {
     Duration? duration,
     bool? popGesture,
     int? id,
-    dynamic curve,
+    _i4.Curve? curve,
     bool? fullscreenDialog = false,
     bool? preventDuplicates = true,
     _i3.Transition? transitionClass,
@@ -129,7 +129,7 @@ class MockNavigationService extends _i1.Mock implements _i3.NavigationService {
     Duration? duration,
     bool? popGesture,
     int? id,
-    dynamic curve,
+    _i4.Curve? curve,
     bool? fullscreenDialog = false,
     bool? preventDuplicates = true,
     _i3.Transition? transitionClass,
@@ -223,7 +223,7 @@ class MockNavigationService extends _i1.Mock implements _i3.NavigationService {
     dynamic arguments,
     int? id,
     bool? opaque,
-    dynamic curve,
+    _i4.Curve? curve,
     Duration? duration,
     bool? fullscreenDialog = false,
     bool? popGesture,

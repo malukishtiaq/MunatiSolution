@@ -100,7 +100,7 @@ class LoginView extends StackedView<LoginViewModel> {
                     ],
                   ),
                   FullWidthButton(
-                    onPressed: () => viewModel.authenticateUser(),
+                    onPressed: () => viewModel.navigateToHomeView(),
                     buttonText: ksLogin,
                   ),
                   const Flexible(fit: FlexFit.tight, child: SizedBox()),

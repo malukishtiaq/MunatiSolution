@@ -1,9 +1,7 @@
-import 'package:Munati/munati_apiclient/models/current_user.dart';
-
-import '../../../munati_apiclient/models/models.dart';
-import '../../../munati_apiclient/requests/auth.dart';
+import '../network/requests/auth.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:timezone/timezone.dart' as tz;
+import '../models/models.dart';
 
 class AuthenticationService {
   late final AuthApi _authApi;

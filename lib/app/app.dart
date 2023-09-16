@@ -1,6 +1,6 @@
 import 'package:Munati/ui/bottom_sheets/notice/notice_sheet.dart';
 import 'package:Munati/ui/dialogs/info_alert/info_alert_dialog.dart';
-import 'package:Munati/ui/views/home/home_view.dart';
+import 'package:Munati/ui/views/home/home_screen.dart';
 import 'package:Munati/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -11,6 +11,10 @@ import 'package:Munati/ui/views/social_login/social_login_view.dart';
 import 'package:Munati/ui/views/social_registration/social_registration_view.dart';
 import 'package:Munati/services/market_service.dart';
 import 'package:Munati/ui/views/market/market_view.dart';
+import 'package:Munati/ui/views/product_details/product_details_view.dart';
+import 'package:Munati/ui/views/profile/profile_view.dart';
+import 'package:Munati/ui/views/cart/cart_view.dart';
+import 'package:Munati/ui/views/cart/cart_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -22,6 +26,10 @@ import 'package:Munati/ui/views/market/market_view.dart';
     MaterialRoute(page: SocialLoginView),
     MaterialRoute(page: SocialRegistrationView),
     MaterialRoute(page: MarketView),
+    MaterialRoute(page: ProductDetailsView),
+    MaterialRoute(page: ProfileView),
+    MaterialRoute(page: CartView),
+    MaterialRoute(page: CartView),
 // @stacked-route
   ],
   dependencies: [

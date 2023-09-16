@@ -14,6 +14,10 @@ class LoginViewModel extends BaseViewModel {
     _navigationService.navigateToRegisterView();
   }
 
+  Future navigateToHomeView() async {
+    _navigationService.navigateToHomeView();
+  }
+
   Future authenticateUser() async {
     var result = await _authenticationService.authenticateUser();
     _navigationService.navigateToMarketView();

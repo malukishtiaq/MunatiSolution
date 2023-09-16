@@ -1,7 +1,5 @@
-import 'package:Munati/munati_apiclient/models/current_user.dart';
-
-import '../munati_apiclient/models/models.dart';
-import '../munati_apiclient/requests/market.dart';
+import '../models/models.dart';
+import '../network/requests/market.dart';
 
 class MarketService {
   late final MarketApi _marketApi;
