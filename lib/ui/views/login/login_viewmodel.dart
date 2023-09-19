@@ -1,8 +1,8 @@
+import 'package:Munati/app/app.router.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
-import '../../../app/app.router.dart';
 import '../../../services/authentication_service.dart';
 import '../../common/all_enums.dart';
 
@@ -15,7 +15,7 @@ class LoginViewModel extends BaseViewModel {
   }
 
   Future navigateToHomeView() async {
-    _navigationService.navigateToHomeView();
+    _navigationService.navigateToNavigationBarView();
   }
 
   Future authenticateUser() async {

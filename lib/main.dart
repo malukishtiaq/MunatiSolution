@@ -23,12 +23,13 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return MaterialApp(
-      initialRoute: Routes.startupView,
-      onGenerateRoute: StackedRouter().onGenerateRoute,
+      title: 'Flutter Demo',
       navigatorKey: StackedService.navigatorKey,
-      navigatorObservers: [
-        StackedService.routeObserver,
-      ],
+      onGenerateRoute: StackedRouter().onGenerateRoute,
+      initialRoute: Routes.startupView,
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
     );
   }
 }

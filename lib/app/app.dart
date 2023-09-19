@@ -14,7 +14,7 @@ import 'package:Munati/ui/views/market/market_view.dart';
 import 'package:Munati/ui/views/product_details/product_details_view.dart';
 import 'package:Munati/ui/views/profile/profile_view.dart';
 import 'package:Munati/ui/views/cart/cart_view.dart';
-import 'package:Munati/ui/views/cart/cart_view.dart';
+import 'package:Munati/ui/views/navigation_bar/navigation_bar_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -29,7 +29,7 @@ import 'package:Munati/ui/views/cart/cart_view.dart';
     MaterialRoute(page: ProductDetailsView),
     MaterialRoute(page: ProfileView),
     MaterialRoute(page: CartView),
-    MaterialRoute(page: CartView),
+    MaterialRoute(page: NavigationBarView),
 // @stacked-route
   ],
   dependencies: [
