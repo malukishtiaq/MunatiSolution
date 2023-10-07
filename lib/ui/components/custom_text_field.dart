@@ -5,8 +5,10 @@ import '../common/common_files.dart';
 class CustomTextField extends StatelessWidget {
   String ksloginUsernameEmailPhone = "";
   bool isPassword;
+  TextEditingController controller;
   CustomTextField(
-    this.ksloginUsernameEmailPhone, {
+    this.ksloginUsernameEmailPhone,
+    this.controller, {
     this.isPassword = false,
     super.key,
   });
@@ -15,7 +17,8 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 45,
-      child: TextField(
+      child: TextFormField(
+        controller: controller,
         obscureText: isPassword,
         textAlign: TextAlign.left,
         decoration: InputDecoration(

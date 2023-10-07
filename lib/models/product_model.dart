@@ -751,8 +751,8 @@ class Seller {
         authyId: json["authy_id"],
         googleSecret: json["google_secret"],
         twoFactorMethod: json["two_factor_method"],
-        avatarPostId: json["avatar_post_id"],
-        coverPostId: json["cover_post_id"],
+        avatarPostId: json["avatar_post_id"].toString(),
+        coverPostId: json["cover_post_id"].toString(),
         avatarFull: json["avatar_full"],
         isVerified: json["is_verified"],
         userPlatform: json["user_platform"],
@@ -796,19 +796,21 @@ class Seller {
         coverOrg: json["cover_org"],
         coverFull: json["cover_full"],
         id: json["id"],
-        followingData: json["following_data"] == null
-            ? []
-            : List<String>.from(json["following_data"]!.map((x) => x)),
-        followersData: json["followers_data"] == null
-            ? []
-            : List<String>.from(json["followers_data"]!.map((x) => x)),
-        likesData: json["likes_data"] == null
-            ? []
-            : List<String>.from(json["likes_data"]!.map((x) => x)),
-        groupsData: json["groups_data"] == null
-            ? []
-            : List<String>.from(json["groups_data"]!.map((x) => x)),
-        albumData: json["album_data"],
+        // followingData:
+        //     json["following_data"] == null && json["following_data"] == ""
+        //         ? []
+        //         : List<String>.from(json["following_data"]!.map((x) => x)),
+        // followersData:
+        //     json["followers_data"] == null && json["followers_data"] == ""
+        //         ? []
+        //         : List<String>.from(json["followers_data"]!.map((x) => x)),
+        // likesData: json["likes_data"] == null
+        //     ? []
+        //     : List<String>.from(json["likes_data"]!.map((x) => x)),
+        // groupsData: json["groups_data"] == null
+        //     ? []
+        //     : List<String>.from(json["groups_data"]!.map((x) => x)),
+        // albumData: json["album_data"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -1018,18 +1020,18 @@ class ApiNotificationSettings {
 
   factory ApiNotificationSettings.fromJson(Map<String, dynamic> json) =>
       ApiNotificationSettings(
-        eLiked: json["e_liked"],
-        eShared: json["e_shared"],
+        eLiked: json["e_liked"].toString(),
+        eShared: json["e_shared"].toString(),
         eWondered: json["e_wondered"],
-        eCommented: json["e_commented"],
-        eFollowed: json["e_followed"],
-        eAccepted: json["e_accepted"],
-        eMentioned: json["e_mentioned"],
-        eJoinedGroup: json["e_joined_group"],
-        eLikedPage: json["e_liked_page"],
-        eVisited: json["e_visited"],
-        eProfileWallPost: json["e_profile_wall_post"],
-        eMemory: json["e_memory"],
+        eCommented: json["e_commented"].toString(),
+        eFollowed: json["e_followed"].toString(),
+        eAccepted: json["e_accepted"].toString(),
+        eMentioned: json["e_mentioned"].toString(),
+        eJoinedGroup: json["e_joined_group"].toString(),
+        eLikedPage: json["e_liked_page"].toString(),
+        eVisited: json["e_visited"].toString(),
+        eProfileWallPost: json["e_profile_wall_post"].toString(),
+        eMemory: json["e_memory"].toString(),
       );
 
   Map<String, dynamic> toJson() => {
@@ -1068,12 +1070,12 @@ class Details {
   });
 
   factory Details.fromJson(Map<String, dynamic> json) => Details(
-        postCount: json["post_count"],
-        albumCount: json["album_count"],
-        followingCount: json["following_count"],
-        followersCount: json["followers_count"],
-        groupsCount: json["groups_count"],
-        likesCount: json["likes_count"],
+        postCount: json["post_count"].toString(),
+        albumCount: json["album_count"].toString(),
+        followingCount: json["following_count"].toString(),
+        followersCount: json["followers_count"].toString(),
+        groupsCount: json["groups_count"].toString(),
+        likesCount: json["likes_count"].toString(),
         mutualFriendsCount: json["mutual_friends_count"],
       );
 

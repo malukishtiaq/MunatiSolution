@@ -26,8 +26,7 @@ flutter build appbundle
 flutter build apk
 cd android && ./gradlew clean
 
-dart pub global activate stacked_cli
-export PATH="$PATH":"$HOME/.pub-cache/bin"
+dart pub global activate stacked_cli && export PATH="$PATH":"$HOME/.pub-cache/bin"
 stacked create view login
 stacked create service authentication
 

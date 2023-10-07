@@ -1,21 +1,40 @@
+import 'dart:ffi';
+
 import 'package:Munati/app/app.router.dart';
+import 'package:Munati/models/auth_model.dart';
+import 'package:Munati/ui/views/login/login_view.form.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import '../../../app/app.locator.dart';
+import '../../../app/app.logger.dart';
 import '../../../services/authentication_service.dart';
 import '../../common/all_enums.dart';
 
-class LoginViewModel extends BaseViewModel {
+class LoginViewModel extends FormViewModel {
   late final _navigationService = locator<NavigationService>();
   late final _authenticationService = locator<AuthenticationService>();
+  final log = getLogger('FormViewModel');
 
   Future navigateToRegisterView() async {
     _navigationService.navigateToRegisterView();
   }
 
-  Future navigateToHomeView() async {
-    _navigationService.navigateToNavigationBarView();
+  @override
+  void setFormStatus() {
+    log.i('Set form Status with data: $formValueMap');
+
+    if (hasPasswordValidationMessage) {
+      setValidationMessage('Error in the form, please check again');
+    }
+  }
+
+  Future navigateToLandingView() async {
+    AuthResponse? result =
+        await runBusyFuture(_authenticationService.authenticateUser());
+    if (result?.access_token != null && result?.access_token != "") {
+      _navigationService.navigateToLandingView();
+    } else {}
   }
 
   Future authenticateUser() async {

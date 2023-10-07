@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import '../network/requests/auth.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:timezone/timezone.dart' as tz;
@@ -11,16 +13,21 @@ class AuthenticationService {
 
   Future<AuthResponse?> authenticateUser() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+    var userDeviceInfo;
+    if (Platform.isAndroid) {
+      userDeviceInfo = await deviceInfo.androidInfo;
+    } else {
+      userDeviceInfo = await deviceInfo.iosInfo;
+    }
     Map<String, tz.Location> locations = tz.timeZoneDatabase.locations;
 
     var auth = AuthRequest(
         server_key: server_key,
         timezone: locations.keys.first,
-        username: "malukishtiaq@gmail.com",
+        username: "vibes",
         password: "\$Shaqoo125",
-        android_n_device_id: androidInfo.device,
-        android_m_device_id: androidInfo.device,
+        android_n_device_id: userDeviceInfo.name,
+        android_m_device_id: userDeviceInfo.model,
         device_type: "mobile");
 
     AuthResponse? value = await _authApi.authAsync(auth: auth);

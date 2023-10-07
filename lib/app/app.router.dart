@@ -5,15 +5,15 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i13;
+import 'package:flutter/material.dart' as _i14;
 import 'package:flutter/material.dart';
-import 'package:Munati/ui/common/all_enums.dart' as _i14;
+import 'package:Munati/ui/common/all_enums.dart' as _i15;
 import 'package:Munati/ui/views/cart/cart_view.dart' as _i11;
+import 'package:Munati/ui/views/chat/chat_view.dart' as _i13;
 import 'package:Munati/ui/views/home/home_screen.dart' as _i2;
+import 'package:Munati/ui/views/landing/landing_view.dart' as _i12;
 import 'package:Munati/ui/views/login/login_view.dart' as _i4;
 import 'package:Munati/ui/views/market/market_view.dart' as _i8;
-import 'package:Munati/ui/views/navigation_bar/navigation_bar_view.dart'
-    as _i12;
 import 'package:Munati/ui/views/product_details/product_details_view.dart'
     as _i9;
 import 'package:Munati/ui/views/profile/profile_view.dart' as _i10;
@@ -23,7 +23,7 @@ import 'package:Munati/ui/views/social_registration/social_registration_view.dar
     as _i7;
 import 'package:Munati/ui/views/startup/startup_view.dart' as _i3;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i15;
+import 'package:stacked_services/stacked_services.dart' as _i16;
 
 class Routes {
   static const homeView = '/home-view';
@@ -46,7 +46,9 @@ class Routes {
 
   static const cartView = '/cart-view';
 
-  static const navigationBarView = '/navigation-bar-view';
+  static const landingView = '/landing-view';
+
+  static const chatView = '/chat-view';
 
   static const all = <String>{
     homeView,
@@ -58,7 +60,9 @@ class Routes {
     marketView,
     productDetailsView,
     profileView,
-    navigationBarView,
+    cartView,
+    landingView,
+    chatView,
   };
 }
 
@@ -105,43 +109,43 @@ class StackedRouter extends _i1.RouterBase {
       page: _i11.CartView,
     ),
     _i1.RouteDef(
-      Routes.cartView,
-      page: _i11.CartView,
+      Routes.landingView,
+      page: _i12.LandingView,
     ),
     _i1.RouteDef(
-      Routes.navigationBarView,
-      page: _i12.NavigationBarView,
+      Routes.chatView,
+      page: _i13.ChatView,
     ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.LoginView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.LoginView(),
         settings: data,
       );
     },
     _i5.RegisterView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.RegisterView(),
         settings: data,
       );
     },
     _i6.SocialLoginView: (data) {
       final args = data.getArgs<SocialLoginViewArguments>(nullOk: false);
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i6.SocialLoginView(key: args.key, types: args.types),
         settings: data,
@@ -149,39 +153,48 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i7.SocialRegistrationView: (data) {
       final args = data.getArgs<SocialRegistrationViewArguments>(nullOk: false);
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i7.SocialRegistrationView(key: args.key, types: args.types),
         settings: data,
       );
     },
     _i8.MarketView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i8.MarketView(),
         settings: data,
       );
     },
     _i9.ProductDetailsView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.ProductDetailsView(),
         settings: data,
       );
     },
     _i10.ProfileView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i10.ProfileView(),
         settings: data,
       );
     },
     _i11.CartView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
+      return _i14.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.CartView(),
         settings: data,
       );
     },
-    _i12.NavigationBarView: (data) {
-      return _i13.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i12.NavigationBarView(),
+    _i12.LandingView: (data) {
+      final args = data.getArgs<LandingViewArguments>(
+        orElse: () => const LandingViewArguments(),
+      );
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => _i12.LandingView(key: args.key),
+        settings: data,
+      );
+    },
+    _i13.ChatView: (data) {
+      return _i14.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i13.ChatView(),
         settings: data,
       );
     },
@@ -189,6 +202,7 @@ class StackedRouter extends _i1.RouterBase {
 
   @override
   List<_i1.RouteDef> get routes => _routes;
+
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
 }
@@ -199,9 +213,9 @@ class SocialLoginViewArguments {
     required this.types,
   });
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
-  final _i14.SocialMediaTypes types;
+  final _i15.SocialMediaTypes types;
 
   @override
   String toString() {
@@ -226,9 +240,9 @@ class SocialRegistrationViewArguments {
     required this.types,
   });
 
-  final _i13.Key? key;
+  final _i14.Key? key;
 
-  final _i14.SocialMediaTypes types;
+  final _i15.SocialMediaTypes types;
 
   @override
   String toString() {
@@ -247,7 +261,29 @@ class SocialRegistrationViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i15.NavigationService {
+class LandingViewArguments {
+  const LandingViewArguments({this.key});
+
+  final _i14.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
+
+  @override
+  bool operator ==(covariant LandingViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i16.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -305,8 +341,8 @@ extension NavigatorStateExtension on _i15.NavigationService {
   }
 
   Future<dynamic> navigateToSocialLoginView({
-    _i13.Key? key,
-    required _i14.SocialMediaTypes types,
+    _i14.Key? key,
+    required _i15.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -322,8 +358,8 @@ extension NavigatorStateExtension on _i15.NavigationService {
   }
 
   Future<dynamic> navigateToSocialRegistrationView({
-    _i13.Key? key,
-    required _i14.SocialMediaTypes types,
+    _i14.Key? key,
+    required _i15.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -394,14 +430,30 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToNavigationBarView([
+  Future<dynamic> navigateToLandingView({
+    _i14.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.landingView,
+        arguments: LandingViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToChatView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return navigateTo<dynamic>(Routes.navigationBarView,
+    return navigateTo<dynamic>(Routes.chatView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -465,8 +517,8 @@ extension NavigatorStateExtension on _i15.NavigationService {
   }
 
   Future<dynamic> replaceWithSocialLoginView({
-    _i13.Key? key,
-    required _i14.SocialMediaTypes types,
+    _i14.Key? key,
+    required _i15.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -482,8 +534,8 @@ extension NavigatorStateExtension on _i15.NavigationService {
   }
 
   Future<dynamic> replaceWithSocialRegistrationView({
-    _i13.Key? key,
-    required _i14.SocialMediaTypes types,
+    _i14.Key? key,
+    required _i15.SocialMediaTypes types,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -554,14 +606,30 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithNavigationBarView([
+  Future<dynamic> replaceWithLandingView({
+    _i14.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.landingView,
+        arguments: LandingViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithChatView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return replaceWith<dynamic>(Routes.navigationBarView,
+    return replaceWith<dynamic>(Routes.chatView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
